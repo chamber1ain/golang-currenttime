@@ -7,15 +7,11 @@ package main
 import (
 	"fmt"
 	nt "github.com/beevik/ntp"
-	"log"
 	"time"
 )
 
 func main() {
-	response, err := nt.Query("0.beevik-ntp.pool.ntp.org")
+	response, _ := nt.Query("0.beevik-ntp.pool.ntp.org")
 	time := time.Now().Add(response.ClockOffset)
 	fmt.Println(time)
-	if err == nil {
-		log.Fatal(err)
-	}
 }
